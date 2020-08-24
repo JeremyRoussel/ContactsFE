@@ -3,6 +3,8 @@ import {Container, Row, Col} from 'react-bootstrap'
 import FormModal from './components/modals/Modal'
 import DataTable from './components/tables/DataTable'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
+import * as contactActions from './actions/contactActions'
 
 class App extends Component {
 
@@ -67,4 +69,15 @@ class App extends Component {
   }
 }
 
-export default App
+App.propTypes = {
+  contacts: PropTypes.array.isRequired
+}
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    contacts: state.contacts
+  }
+}
+
+export default connect(mapStateToProps, null)(App)
