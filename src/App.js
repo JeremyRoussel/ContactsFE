@@ -16,13 +16,6 @@ class App extends Component {
     }
   }
 
-  getItems(){
-    fetch('http://localhost:3001/crud')
-      .then(response => response.json())
-      .then(items => this.setState({items}))
-      .catch(err => console.log(err))
-  }
-
   addItemToState = (item) => {
     this.setState(prevState => ({
       items: [...prevState.items, item]
@@ -42,11 +35,10 @@ class App extends Component {
     this.setState({ items: updatedItems })
   }
 
-  componentDidMount(){
-    this.getItems()
-  }
 
   render() {
+
+    // console.log(this.props.contacts)
     return (
       <Container className="App">
         <Row>
@@ -56,7 +48,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col>
-            <DataTable items={this.state.items} updateState={this.updateState} deleteItemFromState={this.deleteItemFromState} />
+            <DataTable items={this.props.contacts} updateState={this.updateState} deleteItemFromState={this.deleteItemFromState} />
           </Col>
         </Row>
         <Row>
@@ -71,6 +63,10 @@ class App extends Component {
 
 App.propTypes = {
   contacts: PropTypes.array.isRequired
+}
+
+App.defaultProps = {
+  contacts: []
 }
 
 

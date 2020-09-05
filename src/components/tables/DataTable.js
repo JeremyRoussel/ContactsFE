@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'react-bootstrap';
 import FormModal from '../modals/Modal'
+// import PropTypes from 'prop-types'
 
 class DataTable extends Component {
 
@@ -26,6 +27,8 @@ class DataTable extends Component {
   }
 
   render() {
+
+    console.log(this.props.items)
 
     const items = this.props.items.map(item => {
       return (
